@@ -1,0 +1,20 @@
+permalink: /:title 
+
+exclude: [".rvmrc", ".rbenv-version", "README.md", "Rakefile", "changelog.md"]
+auto: true
+markdown: redcarpet
+pygments: true
+paginate: 10
+title : Gump空间
+tagline: 安静的思考
+author :
+  name : gump
+  email : gumpeng@gmail.com
+  github : 
+
+
+comments :
+  provider : disqus
+  disqus :
+    short_name : gump-blog
+

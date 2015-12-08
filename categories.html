@@ -1,0 +1,26 @@
+---
+layout: page
+title: 分类
+header: 文章分类
+group: navigation
+---
+
+<ul class="tag_box inline">
+  {% for category in site.categories %} 
+      <li><a href="/categories.html#{{ category[0] }}-ref">
+        {{ category[0] }} <span>{{ category[1].size }}</span>
+      </a></li>
+    {% endfor %}
+</ul>
+
+{% for category in site.categories %} 
+  <h2 id="{{ category[0] }}-ref">{{ category[0] }}</h2>
+  <ul>
+    {% for node in category[1] %}
+      {% if node.title != null %}
+      <li><a href="{{node.url}}">{{node.title}}</a></li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+{% endfor %}
+

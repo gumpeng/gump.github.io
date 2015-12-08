@@ -1,0 +1,50 @@
+---
+layout: page
+title: Gump笔记
+tagline: 简单的视角，看这世界
+---
+<div class="row">
+  <div class="span9">
+    <div class="post-list">
+      {% for post in paginator.posts %}
+      <div class="post-item">
+        <div class="post-title">
+          <h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
+          <i class="icon-list icon-white"></i> <a href="/categories.html#{{ post.category }}-ref">{{ post.category }}</a>
+          <i class="icon-calendar icon-white"> </i><a href="">{{ post.date | date: "%Y年%m月%d日" }}</a>
+        </div>
+        <div class="post-excerpt content">
+          <p>{{ post.excerpt }}</p>
+          <a href="{{ post.url }}" class="pull-right">阅读全文 &gt;&gt;</a>
+          <ul class="tag_box inline">
+            <li><i class="icon-tags icon-white"></i></li>
+            {% for tag in post.tags %}
+            <li><a href="/tags.html#{{ tag }}-ref">{{ tag }}</a></li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+      <hr>
+      {% endfor %}
+    </div>
+    {% include pagination %}
+  </div>
+
+  <div class="span3">
+    <div class="sidebar">
+      <h4 class="sidebar-title"><i class="icon-list icon-white"></i> 分类</h4>
+      <ul class="sidebar-content category-list">
+        {% for category in site.categories %}
+        <li><a href="/categories.html#{{ category[0] }}-ref">{{ category[0] }}</a></li>
+        {% endfor %}
+      </ul>
+      <h4 class="sidebar-title"><i class="icon-tags icon-white"></i> 标签</h4>
+      <ul class="sidebar-content tag_box inline">
+        {% for tag in site.tags %}
+        <li><a href="/tags.html#{{ tag[0] }}-ref">{{ tag[0] }}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</div>
+<hr>

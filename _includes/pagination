@@ -1,0 +1,46 @@
+    {% assign total_pages = paginator.total_pages %}
+    {% assign current_page = paginator.page %}
+    
+    {% if total_pages <  5 or current_page < 3  %}
+      {% assign start_page = 1  %}
+    {% elsif total_pages <  current_page | plus:2 %}
+      {% assign start_page = total_pages | minus:4 %}
+    {% else %}
+      {% assign start_page = current_page | minus:2 %}
+    {% endif %}
+    {% assign end_page = start_page | plus:4 %}
+    {% if total_pages < end_page %}
+      {% assign end_page = total_pages %}
+    {% endif %}
+
+    <div class="pagination pagination-large">
+      <ul>
+        {% if paginator.previous_page %}
+          {% if paginator.previous_page == 1 %}
+          <li><a href="/">&laquo; 上一页</a></li>
+          {% else %}
+          <li><a href="{{ paginator.previous_page_path }}">&laquo; 上一页</a></li>
+          {% endif %}
+        {% else %}
+          <li class="disabled"><a>&laquo; 上一页</a></li>
+        {% endif %} 
+        
+        {% for i in (start_page..end_page) %}
+          {% if i == paginator.page %}
+            <li class="active"><span>{{ i }}</span></li>
+          {% else %}
+            {% if i == 1 %}
+            <li><a href="/">{{ i }}</a></li>
+            {% else %}
+            <li><a href="/page{{ i }}">{{ i }}</a></li>
+            {% endif %}
+          {% endif %}
+        {% endfor %}
+
+        {% if paginator.next_page %}
+        <li><a href="{{ paginator.next_page_path }}">下一页 &raquo;</a></li>
+        {% else %}
+        <li class="disabled"><a>下一页 &raquo;</a></li>
+        {% endif %}
+      </ul>
+    </div>
