@@ -1,26 +1,22 @@
 ---
 layout: page
-title: 分类
-header: 文章分类
+title: Categories
+header: Posts By Category
 group: navigation
 ---
+{% include JB/setup %}
 
 <ul class="tag_box inline">
-  {% for category in site.categories %} 
-      <li><a href="/categories.html#{{ category[0] }}-ref">
-        {{ category[0] }} <span>{{ category[1].size }}</span>
-      </a></li>
-    {% endfor %}
+  {% assign categories_list = site.categories %}
+  {% include JB/categories_list %}
 </ul>
 
+
 {% for category in site.categories %} 
-  <h2 id="{{ category[0] }}-ref">{{ category[0] }}</h2>
+  <h2 id="{{ category[0] }}-ref">{{ category[0] | join: "/" }}</h2>
   <ul>
-    {% for node in category[1] %}
-      {% if node.title != null %}
-      <li><a href="{{node.url}}">{{node.title}}</a></li>
-      {% endif %}
-    {% endfor %}
+    {% assign pages_list = category[1] %}  
+    {% include JB/pages_list %}
   </ul>
 {% endfor %}
 
