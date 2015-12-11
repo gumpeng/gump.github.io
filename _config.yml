@@ -9,14 +9,12 @@ pygments: true
 # Themes are encouraged to use these universal variables 
 # so be sure to set them if your theme uses them.
 #
-title : Liyuan Test
+title : Gump space
 tagline: Site Tagline
 author :
-  name : Liyuan Chen
-  email : liyuan.chen@datayes.com
-  github : poxlzm
-  twitter : liyuan
-  feedburner : liyuan
+  name : Gumpeng
+  email : xiaopengc@gmail.com
+  github : gumpeng
 
 # The production_url is only used when full-domain names are needed
 # such as sitemap.txt 
